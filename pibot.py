@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-
+import time
 
 pinLF = 10
 pinLB = 9
