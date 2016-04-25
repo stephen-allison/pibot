@@ -65,7 +65,7 @@ def runCommand(command, duration):
     try:
         action = COMMANDS[command]
         action()
-        time.sleep(duration)
+        time.sleep(float(duration))
     except KeyError:
         print "Unknown command %s" % command
 
