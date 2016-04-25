@@ -70,7 +70,7 @@ def runCommand(command, duration):
         print "Unknown command %s" % command
 
 def runProgram(program):
-    commands = re.findall('([a-zA-Z])([0-9])', program)
+    commands = re.findall('([a-zA-Z])([0-9]*)', program)
     for command in commands:
         runCommand(*command)
     stop()
