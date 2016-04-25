@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 import time
+import sys
+import re
 
 pinLB = 10
 pinLF = 9
@@ -50,12 +52,35 @@ def right():
 def left():
     setPwm((pwmStop,pwmDutyCycle,pwmDutyCycle,pwmStop))
 
-forwards()
-time.sleep(1)
-right()
-time.sleep(0.5)
-backwards()
-time.sleep(1)
-stop()
-GPIO.cleanup()
+COMMANDS = {
+    'f': forwards,
+    'b': backwards,
+    'r': right,
+    'l': left,
+    's': stop
+}
+
+def runCommand(command, duration):
+    try:
+        action = COMMANDS[command]
+        action()
+        time.sleep(duration)
+    except KeyError:
+        print "Unknown command %s" % command
+
+def runProgram(program):
+    commands = re.findall('([a-zA-Z])([0-9])', program)
+    for command in commands:
+        runCommand(*command)
+    stop()
+    GPIO.cleanup()
+
+if __name__ == '__main__':
+    runProgram(sys.argv[1])
+
+
+
+
+
+
 
