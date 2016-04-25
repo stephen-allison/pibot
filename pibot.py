@@ -12,7 +12,8 @@ pinRF = 7
 pinsR = (pinRF, pinRB)
 
 pwmFreq = 20
-pwmDutyCycle = 30
+pwmDutyCycleR = 30
+pwmDutyCycleL = 28
 pwmStop = 0
 
 
@@ -41,16 +42,16 @@ def setPwm(dutyCycles):
         pin.ChangeDutyCycle(dc)
 
 def forwards():
-    setPwm((pwmDutyCycle,pwmStop,pwmDutyCycle,pwmStop))
+    setPwm((pwmDutyCycleL,pwmStop,pwmDutyCycleR,pwmStop))
 
 def backwards():
-    setPwm((pwmStop,pwmDutyCycle,pwmStop,pwmDutyCycle))
+    setPwm((pwmStop,pwmDutyCycleL,pwmStop,pwmDutyCycleR))
 
 def right():
-    setPwm((pwmDutyCycle,pwmStop,pwmStop,pwmDutyCycle))
+    setPwm((pwmDutyCycleL,pwmStop,pwmStop,pwmDutyCycleR))
 
 def left():
-    setPwm((pwmStop,pwmDutyCycle,pwmDutyCycle,pwmStop))
+    setPwm((pwmStop,pwmDutyCycleL,pwmDutyCycleR,pwmStop))
 
 COMMANDS = {
     'f': forwards,
