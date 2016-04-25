@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO
 import time
 
-pinLF = 10
-pinLB = 9
+pinLB = 10
+pinLF = 9
 pinsL = (pinLF, pinLB)
 
-pinRF = 8
-pinRB = 7
+pinRB = 8
+pinRF = 7
 pinsR = (pinRF, pinRB)
 
 pwmFreq = 20
