@@ -1,8 +1,5 @@
-# CamJam EduKit 3 - Robotics
-# Worksheet 6 – Measuring Distance
-import RPi.GPIO as GPIO # Import the GPIO Library
-import time # Import the Time library
-# Set the GPIO modes
+import RPi.GPIO as GPIO
+import time
 
 
 def measureDistance():
