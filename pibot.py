@@ -3,7 +3,7 @@ import time
 import sys
 import re
 from datetime import datetime, timedelta
-from . import distance_sensor
+import distance_sensor
 
 pinLB = 10
 pinLF = 9
