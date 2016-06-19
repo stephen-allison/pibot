@@ -48,7 +48,7 @@ def runSensor():
     try:
         # Repeat the next indented block forever
         while True:
-            d = measureDistance()
+            distance = measureDistance()
             print("Distance : %.1f" % distance)
             time.sleep(0.5)
 
