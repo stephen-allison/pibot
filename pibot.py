@@ -71,12 +71,13 @@ def runCommand(command, duration):
     except KeyError:
         print "Unknown command %s" % command
 
-def runProgram(program):
+def runProgram(program, cleanup=True):
     commands = re.findall('([a-zA-Z])([0-9]*)', program)
     for command in commands:
         runCommand(*command)
-    stop()
-    GPIO.cleanup()
+    if cleanup:
+        stop()
+        GPIO.cleanup()
 
 def avoider():
     distance_sensor.init()
@@ -84,10 +85,10 @@ def avoider():
     runfor = timedelta(minutes=2)
 
     while datetime.now() - start < runfor:
-        runProgram('f1')
+        runProgram('f1', False)
         d = distance_sensor.measureDistance()
         if d < 8:
-            runProgram('b5r10')
+            runProgram('b5r10', False)
 
 
 if __name__ == '__main__':
