@@ -79,6 +79,7 @@ def runProgram(program):
     GPIO.cleanup()
 
 def avoider():
+    distance_sensor.init()
     start = datetime.now()
     runfor = timedelta(minutes=2)
 
