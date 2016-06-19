@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO
 import time
 import sys
 import re
+from datetime import datetime, timedelta
+from . import distance_sensor
 
 pinLB = 10
 pinLF = 9
@@ -76,8 +78,22 @@ def runProgram(program):
     stop()
     GPIO.cleanup()
 
+def avoider():
+    start = datetime.now()
+    runfor = timedelta(minutes=2)
+
+    while datetime.now() - start < runfor:
+        runProgram('f1')
+        d = distance_sensor.measureDistance()
+        if d < 8:
+            runProgram('b5r10')
+
+
 if __name__ == '__main__':
-    runProgram(sys.argv[1])
+    if sys.argv[1] == 'avoider':
+        avoider()
+    else:
+        runProgram(sys.argv[1])
 
 
 
