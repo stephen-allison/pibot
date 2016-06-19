@@ -42,14 +42,18 @@ pinEcho = 18
 GPIO.setup(pinTrigger, GPIO.OUT)  # Trigger
 GPIO.setup(pinEcho, GPIO.IN)      # Echo
 
-try:
-    # Repeat the next indented block forever
-    while True:
-        d = measureDistance()
-        print("Distance : %.1f" % distance)
-        time.sleep(0.5)
+def runSensor():
+    try:
+        # Repeat the next indented block forever
+        while True:
+            d = measureDistance()
+            print("Distance : %.1f" % distance)
+            time.sleep(0.5)
 
-# If you press CTRL+C, cleanup and stop
-except KeyboardInterrupt:
-# Reset GPIO settings
-    GPIO.cleanup()
+    # If you press CTRL+C, cleanup and stop
+    except KeyboardInterrupt:
+    # Reset GPIO settings
+        GPIO.cleanup()
+
+if __name__ == "__main__":
+    runSensor()
