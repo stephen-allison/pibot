@@ -33,11 +33,12 @@ def measureDistance():
     distance = distance / 2
     return distance
 
+pinTrigger = 17
+pinEcho = 18
+
 
 def init():
     # Define GPIO pins to use on the Pi
-    pinTrigger = 17
-    pinEcho = 18
     GPIO.setup(pinTrigger, GPIO.OUT)  # Trigger
     GPIO.setup(pinEcho, GPIO.IN)      # Echo
 
