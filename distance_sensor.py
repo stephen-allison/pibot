@@ -34,16 +34,17 @@ def measureDistance():
     return distance
 
 
-
-# Define GPIO pins to use on the Pi
-pinTrigger = 17
-pinEcho = 18
-GPIO.setup(pinTrigger, GPIO.OUT)  # Trigger
-GPIO.setup(pinEcho, GPIO.IN)      # Echo
+def init():
+    # Define GPIO pins to use on the Pi
+    pinTrigger = 17
+    pinEcho = 18
+    GPIO.setup(pinTrigger, GPIO.OUT)  # Trigger
+    GPIO.setup(pinEcho, GPIO.IN)      # Echo
 
 def runSensor():
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
+    init()
     try:
         # Repeat the next indented block forever
         while True:
